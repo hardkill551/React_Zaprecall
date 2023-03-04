@@ -3,8 +3,8 @@ import {Card, Button} from "./style"
 
 export default function Answer({ array, index, setFlashCard, ct, setCt }) {
   return (
-    <Card step={array.step}>
-      <p data-test={array.step===2?"flashcard-text":"non"}>{array.answer}</p>
+    <Card data-test={array.step===2?"flashcard":""}step={array.step}>
+      <p data-test={array.step===2?"flashcard-text":""}>{array.answer}</p>
       <Button>
         <button data-test="no-btn"onClick={wrong}>Não lembrei</button>
         <button data-test="partial-btn" onClick={moreOrLess}>Quase não lembrei</button>

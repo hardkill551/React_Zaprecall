@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import Question from "./Question"
+import Question from "./Question/Question"
 import Asking from "./Asking"
 import Answer from "./Answer/Answer"
 
