@@ -19,6 +19,5 @@ display:flex;
 justify-content:center;
 align-items:center;
 font-size:18px;
-color:#333333;
 z-index:1;
 `

@@ -1,17 +1,25 @@
 import styled from "styled-components"
 import virar from "../assets/seta_virar.png"
 
-export default function Asking({array}){
+export default function Asking({array, index, setFlashCard}){
     return(
-        <Card>
+        <Card step={array.step}>
             <p>{array.question}</p>
-            <img src={virar} alt={"virar"}></img>
+            <img onClick={newFlashCard} src={virar} alt={"virar"}></img>
         </Card>
     )
+
+    function newFlashCard(){
+        array.step = 2
+        setFlashCard(prevState => {
+            prevState[index]=array
+            return [...prevState]
+        })
+    }
 }
 
 const Card = styled.div`
-    display:none;
+    display:${a => a.step!==1 ? "none" : "flex"};
     justify-content:space-between;
     padding-top:18px;
     padding-left: 15px;

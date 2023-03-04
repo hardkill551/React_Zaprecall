@@ -8,11 +8,16 @@ import Answer from "./Answer/Answer"
 
 
 export default function Questions(){ 
+    const [flashCard, setFlashCard] = useState(cards)
+    console.log(flashCard)
     return (
         <Box>
-            {cards.map((q, index) => <Question array={q} index={index} key={index}/>)}
-            {cards.map((q, index) => <Asking array={q} index={index} key={index}/>)}
-            {cards.map((q, index) => <Answer array={q} index={index} key={index}/>)}
+            {flashCard.map((q, index) => 
+            <div  key={index}>
+            <Question array={q} setFlashCard={setFlashCard} index={index}/>
+            <Asking array={q} setFlashCard={setFlashCard} index={index}/>
+            <Answer array={q} setFlashCard={setFlashCard} index={index}/>
+            </div>)}
         </Box>
     )
 }

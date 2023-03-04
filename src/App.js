@@ -18,6 +18,7 @@ export default function App() {
 
 
 const Body = styled.div`
+color:#333333;
 box-sizing: border-box;
 background-color:#FB6B6B;
 border: 1px solid #dbdbdb;
