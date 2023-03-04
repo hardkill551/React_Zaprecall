@@ -3,9 +3,9 @@ import Question from "./Question/Question"
 
 
 
-export default function Questions({flashCard, setFlashCard, ct, setCt}){ 
+export default function Questions({flashCard, setFlashCard, ct, setCt, trade}){ 
     return (
-        <Box>
+        <Box trade={trade}>
             {flashCard.map((q, index) => 
             <Question array={q} setFlashCard={setFlashCard} index={index} key={index} ct={ct} setCt={setCt}/>
             )}
@@ -14,7 +14,7 @@ export default function Questions({flashCard, setFlashCard, ct, setCt}){
 }
 
 const Box = styled.div`
-    display:flex;
+    display:${a=> a.trade===true?"flex":"none"};
     justify-content:center;
     margin-top:160px;
     flex-direction:column;

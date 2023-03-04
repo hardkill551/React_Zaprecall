@@ -40,7 +40,7 @@ export const Card = styled.div`
     }};
   }
 
-  p {
+  span {
     color: ${(a) => {
       if (a.step === 3) {
         return "#2FBE34";

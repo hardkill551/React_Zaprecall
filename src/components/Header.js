@@ -1,9 +1,9 @@
 import logo from "../assets/logo.png"
 import styled from "styled-components"
 
-export default function Header(){
+export default function Header({trade}){
     return (
-        <Title>
+        <Title trade={trade}>
             <img src={logo} alt="Logo"></img>
             <h1>ZapRecall</h1>
         </Title> 
@@ -11,7 +11,7 @@ export default function Header(){
 }
 
 const Title = styled.div`
-display:flex;
+display:${a=> a.trade===true?"flex":"none"};
 align-items:center;
 justify-content:center;
 font-family:'Righteous', cursive;

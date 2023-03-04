@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-export default function Footer({flashCard, ct}){
+export default function Footer({flashCard, ct, trade}){
     return (
-        <Bottom data-test="footer">
+        <Bottom data-test="footer" trade={trade}>
             <p>{ct}/{flashCard.length} CONCLUÍDOS</p>
         </Bottom>
     )
@@ -15,7 +15,7 @@ background-color:white;
 height:70px;
 width:100vw;
 bottom:0px;
-display:flex;
+display:${a=> a.trade===true?"flex":"none"};
 justify-content:center;
 align-items:center;
 font-size:18px;
