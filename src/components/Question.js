@@ -7,7 +7,7 @@ import erro from "../assets/icone_erro.png"
 export default function Question({array, index, setFlashCard}) {
   return (
     <Card data-test="flashcard"step={array.step}>
-      <p data-test={array.step===0||array.step>=3?"flashcard-text":""}>{`Pergunta ${index+1}`}</p>
+      <p data-test={array.step===0||array.step>=3?"flashcard-text":"non"}>{`Pergunta ${index+1}`}</p>
       <img data-test={data()} onClick={array.step===0 ? newFlashCard : undefined} src={image()} alt="seta"></img>
     </Card>
   );
