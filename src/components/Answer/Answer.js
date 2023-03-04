@@ -1,20 +1,21 @@
 import {Card, Button} from "./style"
 
 
-export default function Answer({ array, index, setFlashCard }) {
+export default function Answer({ array, index, setFlashCard, ct, setCt }) {
   return (
     <Card step={array.step}>
-      <p>{array.answer}</p>
+      <p data-test="flashcard-text">{array.answer}</p>
       <Button>
-        <button onClick={wrong}>Não lembrei</button>
-        <button onClick={moreOrLess}>Quase não lembrei</button>
-        <button onClick={correct}>Zap!</button>
+        <button data-test="no-btn"onClick={wrong}>Não lembrei</button>
+        <button data-test="partial-btn" onClick={moreOrLess}>Quase não lembrei</button>
+        <button data-test="zap-btn" onClick={correct}>Zap!</button>
       </Button>
     </Card>
   );
 
 function correct(){
   array.step = 3
+  setCt(ct+=1)
   setFlashCard(prevState => {
       prevState[index]=array
       return [...prevState]
@@ -22,6 +23,7 @@ function correct(){
 }
 function moreOrLess(){
   array.step = 4
+  setCt(ct+=1)
   setFlashCard(prevState => {
       prevState[index]=array
       return [...prevState]
@@ -29,6 +31,7 @@ function moreOrLess(){
 }
 function wrong(){
   array.step = 5
+  setCt(ct+=1)
   setFlashCard(prevState => {
       prevState[index]=array
       return [...prevState]

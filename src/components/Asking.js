@@ -4,8 +4,8 @@ import virar from "../assets/seta_virar.png"
 export default function Asking({array, index, setFlashCard}){
     return(
         <Card step={array.step}>
-            <p>{array.question}</p>
-            <img onClick={newFlashCard} src={virar} alt={"virar"}></img>
+            <p data-test="flashcard-text">{array.question}</p>
+            <img data-test="turn-btn" onClick={newFlashCard} src={virar} alt={"virar"}></img>
         </Card>
     )
 

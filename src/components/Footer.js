@@ -1,9 +1,9 @@
 import styled from "styled-components"
 
-export default function Footer(){
+export default function Footer({flashCard, ct}){
     return (
-        <Bottom>
-            <p>0/4 CONCLUÍDOS</p>
+        <Bottom data-test="footer">
+            <p>{ct}/{flashCard.length} CONCLUÍDOS</p>
         </Bottom>
     )
 }

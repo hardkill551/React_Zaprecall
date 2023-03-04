@@ -6,9 +6,9 @@ import erro from "../assets/icone_erro.png"
 
 export default function Question({array, index, setFlashCard}) {
   return (
-    <Card step={array.step}>
-      <p>{`Pergunta ${index+1}`}</p>
-      <img onClick={array.step===0 ? newFlashCard : undefined} src={image()} alt="seta"></img>
+    <Card data-test="flashcard"step={array.step}>
+      <p data-test="flashcard-text">{`Pergunta ${index+1}`}</p>
+      <img data-test={data()} onClick={array.step===0 ? newFlashCard : undefined} src={image()} alt="seta"></img>
     </Card>
   );
     function newFlashCard(){
@@ -17,6 +17,20 @@ export default function Question({array, index, setFlashCard}) {
             prevState[index]=array
             return [...prevState]
         })
+    }
+    function data(){
+      if(array.step===0){
+        return "play-btn"
+      }
+      if(array.step===3){
+        return "zap-icon"
+      }
+      if(array.step===4){
+        return "partial-icon"
+      }
+      if(array.step===5){
+        return "no-icon"
+      }
     }
     function image(){
       if(array.step===0){
