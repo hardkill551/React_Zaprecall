@@ -7,9 +7,8 @@ export default function Questions({flashCard, setFlashCard, ct, setCt}){
     return (
         <Box>
             {flashCard.map((q, index) => 
-            <div key={index}>
-            <Question array={q} setFlashCard={setFlashCard} index={index} ct={ct} setCt={setCt}/>
-            </div>)}
+            <Question array={q} setFlashCard={setFlashCard} index={index} key={index} ct={ct} setCt={setCt}/>
+            )}
         </Box>
     )
 }
