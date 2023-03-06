@@ -9,13 +9,12 @@ import { useState } from "react";
 
 export default function Question({ array, index, ct, setCt }) {
   const [step, setStep] = useState(0)
-  
   return (
     <Card data-test={"flashcard"} step={step}>
       <span data-test={"flashcard-text"}>{text()}</span>
       {step !== 2 ? (
         <img
-          data-test={data()}
+          data-test={() => data()}
           onClick={step < 3 ? () => newFlashCard() : undefined}
           src={image()}
           alt={image()}
