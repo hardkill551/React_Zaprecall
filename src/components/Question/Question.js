@@ -6,15 +6,16 @@ import { Card, Button } from "./style";
 import virar from "../../assets/seta_virar.png";
 
 export default function Question({ array, index, setFlashCard, ct, setCt }) {
+  const [step, setStep] = useState(0)
   return (
     <Card data-test={"flashcard"} step={array.step}>
-      <span data-test={"flashcard-text"}>{() => text()}</span>
+      <span data-test={"flashcard-text"}>{text()}</span>
       {array.step !== 2 ? (
         <img
-          data-test={() => data()}
-          onClick={array.step < 3 ? newFlashCard : undefined}
-          src={() => image()}
-          alt={() => image()}
+          data-test={data()}
+          onClick={array.step < 3 ? () => newFlashCard : undefined}
+          src={image()}
+          alt={image()}
         ></img>
       ) : (
         <Button>
@@ -81,7 +82,7 @@ export default function Question({ array, index, setFlashCard, ct, setCt }) {
   }
   function correct() {
     array.step = 3;
-    setCt((ct += 1));
+    setCt(ct += 1);
     setFlashCard((prevState) => {
       prevState[index] = array;
       return [...prevState];
