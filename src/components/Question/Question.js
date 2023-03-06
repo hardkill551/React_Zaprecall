@@ -9,13 +9,15 @@ import { useState } from "react";
 
 export default function Question({ array, index, ct, setCt }) {
   const [step, setStep] = useState(0)
+  const [data, setData] = useState("play-bnt")
+  const [text, setText] = useState(`Pergunta ${index + 1}`)
   return (
     <Card data-test={"flashcard"} step={step}>
-      <span data-test={"flashcard-text"}>{text()}</span>
+      <span data-test={"flashcard-text"}>{text}</span>
       {step !== 2 ? (
         <img
-          data-test={() => data()}
-          onClick={step < 3 ? () => newFlashCard() : undefined}
+          data-test={data}
+          onClick={step < 3 ? () => {setStep(step+1); newData(step+1)}: undefined}
           src={image()}
           alt={image()}
         ></img>
@@ -35,30 +37,16 @@ export default function Question({ array, index, ct, setCt }) {
     </Card>
   );
 
-  function text() {
-    if (step === 0 || step > 2) return `Pergunta ${index + 1}`;
-    if (step === 1) return array.question;
-    if (step === 2) return array.answer;
-  }
-
-  function newFlashCard() {
-    setStep(step+1);
-  }
-  function data() {
-    if (step === 0) {
-      return "play-btn";
-    }
+  function newData(step) {
     if (step === 1) {
-      return "turn-btn";
+      setData("turn-btn")
+      setText(array.question)
     }
-    if (step === 3) {
-      return "zap-icon";
+    if (step > 2){
+      setText(array.question)
     }
-    if (step === 4) {
-      return "partial-icon";
-    }
-    if (step === 5) {
-      return "no-icon";
+    if (step === 2) {
+      setText(array.answer)
     }
   }
   function image() {
@@ -81,13 +69,16 @@ export default function Question({ array, index, ct, setCt }) {
   function correct() {
     setCt(ct += 1);
     setStep(3);
+    setData("zap-icon");
   }
   function moreOrLess() {
     setCt((ct += 1));
     setStep(4);
+    setData("partial-icon");
   }
   function wrong() {
     setCt((ct += 1));
     setStep(5);
+    setData("no-icon");
   }
 }
