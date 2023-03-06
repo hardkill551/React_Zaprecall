@@ -9,15 +9,16 @@ import Welcome from "./components/Welcome";
 
 
 export default function App() {
-  let [ct, setCt] = useState(0)
+  const [ct, setCt] = useState(0)
   const [trade, setTrade] = useState(false)
+  const [icons, setIcons] = useState([])
   return (
     <Body>
       <GlobalStyle />
       <Welcome trade={trade} setTrade={setTrade}/>
       <Header trade={trade}/>
-      <Questions flashCard={cards} ct={ct} setCt={setCt} trade={trade}/>
-      <Footer flashCard={cards} ct={ct} trade={trade}/>
+      <Questions flashCard={cards} ct={ct} setCt={setCt} trade={trade} icons={icons} setIcons={setIcons}/>
+      <Footer flashCard={cards} ct={ct} trade={trade} icons={icons}/>
     </Body>
   );
 }
