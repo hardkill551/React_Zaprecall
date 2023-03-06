@@ -4,28 +4,31 @@ import quase from "../../assets/icone_quase.png";
 import erro from "../../assets/icone_erro.png";
 import { Card, Button } from "./style";
 import virar from "../../assets/seta_virar.png";
+import { useState } from "react";
 
-export default function Question({ array, index, setFlashCard, ct, setCt }) {
+
+export default function Question({ array, index, ct, setCt }) {
   const [step, setStep] = useState(0)
+  
   return (
-    <Card data-test={"flashcard"} step={array.step}>
+    <Card data-test={"flashcard"} step={step}>
       <span data-test={"flashcard-text"}>{text()}</span>
-      {array.step !== 2 ? (
+      {step !== 2 ? (
         <img
           data-test={data()}
-          onClick={array.step < 3 ? () => newFlashCard : undefined}
+          onClick={step < 3 ? () => newFlashCard() : undefined}
           src={image()}
           alt={image()}
         ></img>
       ) : (
         <Button>
-          <button data-test="no-btn" onClick={() => wrong}>
+          <button data-test="no-btn" onClick={() => wrong()}>
             Não lembrei
           </button>
-          <button data-test="partial-btn" onClick={() => moreOrLess}>
+          <button data-test="partial-btn" onClick={() => moreOrLess()}>
             Quase não lembrei
           </button>
-          <button data-test="zap-btn" onClick={() => correct}>
+          <button data-test="zap-btn" onClick={() => correct()}>
             Zap!
           </button>
         </Button>
@@ -34,74 +37,58 @@ export default function Question({ array, index, setFlashCard, ct, setCt }) {
   );
 
   function text() {
-    if (array.step === 0 || array.step > 2) return `Pergunta ${index + 1}`;
-    if (array.step === 1) return array.question;
-    if (array.step === 2) return array.answer;
+    if (step === 0 || step > 2) return `Pergunta ${index + 1}`;
+    if (step === 1) return array.question;
+    if (step === 2) return array.answer;
   }
 
   function newFlashCard() {
-    array.step += 1;
-    setFlashCard((prevState) => {
-      prevState[index] = array;
-      return [...prevState];
-    });
+    setStep(step+1);
   }
   function data() {
-    if (array.step === 0) {
+    if (step === 0) {
       return "play-btn";
     }
-    if (array.step === 1) {
+    if (step === 1) {
       return "turn-btn";
     }
-    if (array.step === 3) {
+    if (step === 3) {
       return "zap-icon";
     }
-    if (array.step === 4) {
+    if (step === 4) {
       return "partial-icon";
     }
-    if (array.step === 5) {
+    if (step === 5) {
       return "no-icon";
     }
   }
   function image() {
-    if (array.step === 0) {
+    if (step === 0) {
       return seta;
     }
-    if (array.step === 1) {
+    if (step === 1) {
       return virar;
     }
-    if (array.step === 3) {
+    if (step === 3) {
       return certo;
     }
-    if (array.step === 4) {
+    if (step === 4) {
       return quase;
     }
-    if (array.step === 5) {
+    if (step === 5) {
       return erro;
     }
   }
   function correct() {
-    array.step = 3;
     setCt(ct += 1);
-    setFlashCard((prevState) => {
-      prevState[index] = array;
-      return [...prevState];
-    });
+    setStep(3);
   }
   function moreOrLess() {
-    array.step = 4;
     setCt((ct += 1));
-    setFlashCard((prevState) => {
-      prevState[index] = array;
-      return [...prevState];
-    });
+    setStep(4);
   }
   function wrong() {
-    array.step = 5;
     setCt((ct += 1));
-    setFlashCard((prevState) => {
-      prevState[index] = array;
-      return [...prevState];
-    });
+    setStep(5);
   }
 }

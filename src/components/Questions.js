@@ -3,11 +3,11 @@ import Question from "./Question/Question"
 
 
 
-export default function Questions({flashCard, setFlashCard, ct, setCt, trade}){ 
+export default function Questions({flashCard, ct, setCt, trade}){ 
     return (
         <Box trade={trade}>
             {flashCard.map((q, index) => 
-            <Question array={q} setFlashCard={setFlashCard} index={index} key={index} ct={ct} setCt={setCt}/>
+            <Question array={q} index={index} key={index} ct={ct} setCt={setCt}/>
             )}
         </Box>
     )

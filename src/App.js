@@ -9,7 +9,6 @@ import Welcome from "./components/Welcome";
 
 
 export default function App() {
-  const [flashCard, setFlashCard] = useState(cards)
   let [ct, setCt] = useState(0)
   const [trade, setTrade] = useState(false)
   return (
@@ -17,8 +16,8 @@ export default function App() {
       <GlobalStyle />
       <Welcome trade={trade} setTrade={setTrade}/>
       <Header trade={trade}/>
-      <Questions flashCard={flashCard} setFlashCard={setFlashCard} ct={ct} setCt={setCt} trade={trade}/>
-      <Footer flashCard={flashCard} setFlashCard={setFlashCard} ct={ct} trade={trade}/>
+      <Questions flashCard={cards} ct={ct} setCt={setCt} trade={trade}/>
+      <Footer flashCard={cards} ct={ct} trade={trade}/>
     </Body>
   );
 }
