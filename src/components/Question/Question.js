@@ -14,7 +14,7 @@ export default function Question({ array, index, ct, setCt }) {
         <p data-test={"flashcard-text"}>{`Pergunta ${index + 1}`}</p>
         {step === 0 ? (
           <img
-            data-test={"play-bnt"}
+            data-test={"play-btn"}
             onClick={() => setStep(step + 1)}
             src={seta}
             alt="seta"
