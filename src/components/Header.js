@@ -22,6 +22,8 @@ height:130px;
 width:100vw;
 background-color:#FB6B6B;
 z-index:1;
+top:0px;
+left:0px;
 h1{
     display:flex;
     justify-content:center;

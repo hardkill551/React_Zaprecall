@@ -8,23 +8,23 @@ import virar from "../../assets/seta_virar.png";
 export default function Question({ array, index, setFlashCard, ct, setCt }) {
   return (
     <Card data-test={"flashcard"} step={array.step}>
-      <span data-test={"flashcard-text"}>{text()}</span>
+      <span data-test={"flashcard-text"}>{() => text()}</span>
       {array.step !== 2 ? (
         <img
-          data-test={data()}
+          data-test={() => data()}
           onClick={array.step < 3 ? newFlashCard : undefined}
-          src={image()}
-          alt={image()}
+          src={() => image()}
+          alt={() => image()}
         ></img>
       ) : (
         <Button>
-          <button data-test="no-btn" onClick={wrong}>
+          <button data-test="no-btn" onClick={() => wrong}>
             Não lembrei
           </button>
-          <button data-test="partial-btn" onClick={moreOrLess}>
+          <button data-test="partial-btn" onClick={() => moreOrLess}>
             Quase não lembrei
           </button>
-          <button data-test="zap-btn" onClick={correct}>
+          <button data-test="zap-btn" onClick={() => correct}>
             Zap!
           </button>
         </Button>
